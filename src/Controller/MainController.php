@@ -12,15 +12,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MainController extends AbstractController
 {
     #[Route('/', name: 'app_main')]
-    public function index(ArticlesRepository $articlesRepository, PaginatorInterface $paginator, Request $request): Response
+    #[Route('/{slug}', name: 'app_main_slug', requirements: ['slug' => '[a-zA-Z0-9\-]+'])]
+    public function index(string $slug = null, ArticlesRepository $articlesRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $dql = $articlesRepository->findArticlesByLimitPagination();
+        $dql = $articlesRepository->findArticlesByLimitPagination($slug);
 
         $pagination = $paginator->paginate(
             $dql,
             $request->query->getInt('page', 1),
             12
-        );
+        ); 
 
         return $this->render('main/index.html.twig', [
             'articles' => $pagination,

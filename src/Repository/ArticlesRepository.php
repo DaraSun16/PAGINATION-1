@@ -19,12 +19,18 @@ class ArticlesRepository extends ServiceEntityRepository
     /**
      * @return Articles[] Returns an array of Articles objects
      */
-    public function findArticlesByLimitPagination(): array
+    public function findArticlesByLimitPagination(?string $slug = null): array 
     {
-        return $this->createQueryBuilder('a')
-            ->getQuery()
-            ->getResult()
-        ;
+        $dql = $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC');
+
+        if ($slug) {
+            $dql->join('a.category', 'c') // Join with the Category entity
+            ->andWhere('c.slug = :slug')
+            ->setParameter('slug', $slug);
+        }
+
+        return $dql->getQuery()->getResult();
     }
 
     //    public function findOneBySomeField($value): ?Articles

@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "fakerphp/faker": "*",
         "knplabs/knp-paginator-bundle": "*",
+        "symfony/apache-pack": "*",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
         "symfony/flex": "^2",
