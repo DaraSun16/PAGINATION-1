@@ -1,0 +1,1 @@
+Réalisation d'un petit projet pour faire fonctionner la pagination avec la création d'articles de blog, remplissage grace a faker.
