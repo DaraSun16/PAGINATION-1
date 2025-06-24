@@ -29,6 +29,7 @@ class ArticlesFixtures extends Fixture
                 $articles->setPicture($faker->imageUrl('https://picsum.photos/200/300')); // Set a random picture URL
                 $articles->setCreatedAt(new \DateTimeImmutable()); // Set the current date and time as created at
                 $articles->setCategory($category); // Set the category for the article
+                $articles->setPrice($faker->randomFloat(2, 5, 100)); // Set a random price between 10 and 100
 
                 $manager->persist($articles); // Persist the article entity
             }
