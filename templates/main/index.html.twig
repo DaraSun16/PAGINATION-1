@@ -13,7 +13,7 @@
 
             <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk0Wl6fGBPSJZdpJ85Zevl3OAhfQ4Pyo5FhQ&s" class="card-img-top" alt="Hello World">
+                    <img src="{{ item.picture|default('https://placekitten.com/300/200') }}" class="card-img-top" alt="Hello World">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">{{ item.author }}</p>
@@ -24,7 +24,7 @@
                         </i>
                         <p class="card-text">
                             <a href="{{ path('app_cart', {id:item.id}) }}">
-                                    {{ item.price }} €
+                                {{ item.price }} €
                             </a>
                         </p>
                     </div>

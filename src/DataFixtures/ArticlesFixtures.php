@@ -26,7 +26,7 @@ class ArticlesFixtures extends Fixture
                 $articles->setTitle($faker->sentence(6, true)); // Set a random title
                 $articles->setSlug($faker->slug(6, true)); // Set a random slug
                 $articles->setAuthor($faker->name); // Set a random author name
-                $articles->setPicture($faker->imageUrl('https://picsum.photos/200/300')); // Set a random picture URL
+                $articles->setPicture('https://picsum.photos/200/300?random=' . $i); // Set a random picture URL
                 $articles->setCreatedAt(new \DateTimeImmutable()); // Set the current date and time as created at
                 $articles->setCategory($category); // Set the category for the article
                 $articles->setPrice($faker->randomFloat(2, 5, 100)); // Set a random price between 10 and 100

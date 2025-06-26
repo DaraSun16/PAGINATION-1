@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class ="col-md-12">
+                <h1>Rentrez votre carte bleu</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix</th>
+                            <th>Quantite</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                        <tbody>
+                            {% for element in data %}
+                            <tr>
+                                <td>
+                                    <img
+                                        src="{{ element.article.picture }}"
+                                        class="card-img-top"
+                                        alt="{{ item.title|default('Image du produit') }}"
+                                        role="img"
+                                        style="max-width: 100px;"
+                                        width="100"
+                                        height="100"
+                                    >{{ element.article.title }}</td>
+                                <td>{{ element.article.price }}</td>
+                                <td>{{ element.quantity }}</td>
+                                <td>{{ element.quantity * element.article.price }}</td>
+                                <td>
+                                    <a href ="{{ path('app_cart', {id: element.article.id}) }}" class="btn btn-danger">+</a>
+                                    <a href ="{{ path('app_remove', {id: element.article.id}) }}" class="btn btn-danger">-</a>
+                                    <a href ="{{ path('app_delete', {id: element.article.id}) }}" class="btn btn-danger">Supprimer</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        <tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan"3">Total</td>
+                                <td>{{ total }}</td>
+                                <td><a href ="{{ path('app_empty') }}" class="btn btn-danger">EFFACER</a></td>
+                            </tr>
+                        <tfoot>
+                    </thead>
+                </table>
+                <a href ="" class="btn btn-danger">TOUT EFFACER</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}
