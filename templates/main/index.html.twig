@@ -13,7 +13,7 @@
 
             <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <div class="card">
-                    <img src="{{ item.picture|default('https://placekitten.com/300/200') }}" class="card-img-top" alt="Hello World">
+                    <img src="{{ item.picture ?: 'https://placekitten.com/300/200' }}" class="card-img-top" alt="{{ item.title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">{{ item.author }}</p>
