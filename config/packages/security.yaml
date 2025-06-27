@@ -34,8 +34,14 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+<<<<<<< HEAD
         - { path: ^/dash/board/profile, roles: ROLE_USER }
         - { path: ^/dash/board/ecrivain, roles: ROLE_ECRIVAIN }
+=======
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/dash/board/profile, roles: ROLE_USER } #Modifier la route de connection 
+        - { path: ^/dash/board/ecrivain, roles: ROLE_ECRIVAIN } #Modifier la route de connection 
+>>>>>>> f6b961eddb15d13be96b1b12395b16e8408b7247
 
 when@test:
     security:
