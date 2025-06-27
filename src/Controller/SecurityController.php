@@ -12,6 +12,18 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login', priority:10)]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // if the user is already authenticated, redirect to the dashboard
+        if ($this->getUser()){
+            if ($this->isGranted('ROLE_ADMIN')){
+                return $this->redirectToRoute('admin');
+            } elseif ($this->isGranted('ROLE_USER')){
+                return $this->redirectToRoute('app_dash_board_profile');
+            } elseif ($this->isGranted('ROLE_ECRIVAIN')){
+                return $this->redirectToRoute('app_dash_board_ecrivain');
+            }
+            return $this->redirectToRoute('app_dash_board_profile');
+        }       
+        
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
