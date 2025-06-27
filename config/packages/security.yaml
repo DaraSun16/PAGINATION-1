@@ -35,7 +35,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/dash/board/profile, roles: ROLE_USER } #Modifier la route de connection 
+        - { path: ^/dash/board/ecrivain, roles: ROLE_ECRIVAIN } #Modifier la route de connection 
 
 when@test:
     security:
